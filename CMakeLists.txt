@@ -14,7 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         Cliente.h
-        FileReader.h
+        Cliente.cpp
+        Pedidos.h
         main.cpp
         mainwindow.cpp
         mainwindow.h

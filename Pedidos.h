@@ -1,4 +1,17 @@
-#ifndef PEDIDO_H
-#define PEDIDO_H
+#include "Cliente.h"
 
-#endif // PEDIDO_H
+struct Pedidos
+{
+
+    int numero_pedido;
+    string codigo_cliente;
+
+    struct Producto{
+        string codigo_producto;
+        int cantidad;
+    };
+
+    Pedidos() {}
+};
+Pedidos *leer_pedidos();
+

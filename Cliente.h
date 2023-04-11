@@ -2,7 +2,12 @@
 #include <fstream>
 #include <cstring>
 #include <QDebug>
+#include <chrono>
+#include <thread>
+
+#include <dirent.h>
 using namespace std;
+
 struct Cliente{
     string Codigo;
     string Nombre;
@@ -17,5 +22,7 @@ struct Cliente{
 //DECLARACION D FUNCIONES:
     string to_string();
 };
-Cliente *leerClientes();
-string *split(string str);
+Cliente *leerClientes(int&);
+string *split(string str,int);
+int pos_d_cliente(string,Cliente*,int);
+

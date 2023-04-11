@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "Cliente.h"
+#include "Pedidos.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>

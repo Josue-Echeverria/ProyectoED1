@@ -1,14 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <cstring>
-#include <QDebug>
-using namespace std;
+#include "Pedidos.h"
 
 struct NodoPedido{
-    Pedido *pedido;
+    Pedidos *pedido;
     NodoPedido* sig;
     // constructores
-    Nodo(Pedido * p)
+    NodoPedido(Pedidos * p)
     {
         pedido = p;
         sig = NULL;
@@ -23,7 +19,7 @@ struct ColaPedidos{
     }
 
     // encabezados de funcion
-    void encolarPedido (Pedido *p);
+    void encolarPedido (Pedidos *p);
     NodoPedido* desencolar (void);
     NodoPedido* verFrente(void);
     bool vacia(void);

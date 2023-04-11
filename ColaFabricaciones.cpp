@@ -8,7 +8,7 @@ bool ColaPedidos::vacia (void)
         return false;
 }
 
-void ColaPedidos::encolarPedido (Pedido * p){
+void ColaPedidos::encolarPedido (Pedidos * p){
     if (vacia())
         frente = new NodoPedido (p);
     else
@@ -42,7 +42,7 @@ void ColaPedidos::imprimir(void)
     NodoPedido *tmp = frente;
     while (tmp != NULL)
     {
-        cout << tmp->pedido->imprimir() << "-" << endl;  //hacer el imprimir
+        cout << tmp->pedido->numero_pedido << "-" << endl;  //hacer el imprimir
         tmp = tmp->sig;
     }
     cout << "Final" << endl;

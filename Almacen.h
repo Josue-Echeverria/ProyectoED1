@@ -11,5 +11,8 @@ struct Almacen
         }
     }
     void instertar_producto(string,int,int,char,string);
+    Producto *existeProducto(string);
+    bool existeCant(Producto *, int);
+    void modificarCant(Producto *, int);
 };
 Almacen *leer_productos();

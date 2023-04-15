@@ -80,3 +80,24 @@ Almacen *leer_productos(){
     archivoProductos.close();
     return almacen_2_return;
 }
+
+Producto *Almacen::existeProducto(string codigo){
+    for(int i = 0; i <10;i++){
+        for(int j = 0;j<26;j++){
+            if(matriz_productos[i][j]->codigo_producto == codigo)
+                return matriz_productos[i][j];
+        }
+    }
+    return NULL;
+}
+
+bool Almacen::existeCant(Producto * prod, int cant){
+    if(prod->cantidad >= cant)
+        return true;
+    return false;
+}
+
+void Almacen::modificarCant(Producto * prod, int cant){
+    prod->cantidad -= cant;
+}
+

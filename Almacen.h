@@ -1,4 +1,4 @@
-#include "Producto.h"
+#include "ListaProductos.h"
 
 struct Almacen
 {
@@ -15,4 +15,4 @@ struct Almacen
     bool existeCant(Producto *, int);
     void modificarCant(Producto *, int);
 };
-Almacen *leer_productos();
+Almacen *leer_productos(ifstream*);

@@ -7,19 +7,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    string s = "";
-    QTextBrowser *console = findChild<QTextBrowser*>("textBrowser");
-    int numero_d_clientes = 0;
-    //
-    std::cout<<"HOLA"<<std::endl;
-    leer_productos();
-Cliente *a = leerClientes(numero_d_clientes);
-    leer_pedidos(a,numero_d_clientes);
-   for (int i = 0;i<numero_d_clientes; i++){
-        s += a[i].to_string();
-    }
 
-    console->setText(QString::fromStdString(s));
+    /*
+     * TO DO:
+     * si alguno de los archivos tiene un formato incorrecto no deberia de salir la interfaz(deberua de salir un mesaje de error
+     *
+     */
+
+ //  console->setText(QString::fromStdString(s));
 
 }
 
@@ -27,4 +22,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
 

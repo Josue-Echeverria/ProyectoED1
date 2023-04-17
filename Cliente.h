@@ -4,8 +4,9 @@
 #include <QDebug>
 #include <chrono>
 #include <thread>
-
+#include <filesystem>
 #include <dirent.h>
+#include <QtCore/QDir>
 using namespace std;
 
 struct Cliente{
@@ -13,7 +14,11 @@ struct Cliente{
     string Nombre;
     int Prioridad;
 
-    Cliente(){}
+    Cliente(){
+        string Codigo = "";
+        string Nombre= "";
+        int Prioridad = 0;
+    }
     Cliente(string Codigo_entrada, string Nombre_entrada, int Prioridad_entrada){
         Codigo = Codigo_entrada;
         Nombre = Nombre_entrada;
@@ -22,7 +27,6 @@ struct Cliente{
 //DECLARACION D FUNCIONES:
     string to_string();
 };
-Cliente *leerClientes(int&);
-string *split(string str,int);
-int pos_d_cliente(string,Cliente*,int);
 
+int pos_d_cliente(string,Cliente*,int);
+string *adv_tokenizer(string s, char del);

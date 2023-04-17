@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "Pedidos.h"
+#include "ColaFabricaciones.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>
@@ -19,6 +19,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
+
+private slots:
 
 private:
     Ui::MainWindow *ui;

@@ -1,4 +1,4 @@
-#include "Cliente.h"
+#include "ListaClientes.h"
 
 struct Producto{
     string codigo_producto;
@@ -6,7 +6,13 @@ struct Producto{
     int duracion_d_fabricacion;
     char categoria;
     string ubicacion;
-    Producto(){};
+    Producto(){
+        string codigo_producto = "";
+        int cantidad = 0 ;
+        int duracion_d_fabricacion = 0;
+        char categoria;
+        string ubicacion = "";
+    };
     Producto(string codigo_producto_entrada,int cantidad_entrada){
         cantidad = cantidad_entrada;
         codigo_producto = codigo_producto_entrada;
@@ -22,6 +28,6 @@ struct Producto{
         return codigo_producto+"\n"+std::to_string(cantidad);
     }
     string to_string_in_almacen(){
-        return codigo_producto+"\n"+std::to_string(cantidad)+"\n"+std::to_string(duracion_d_fabricacion)+"\n"+categoria+"\n"+ubicacion;
+        return codigo_producto+"\n"+to_string(cantidad)+"\n"+to_string(duracion_d_fabricacion)+"\n"+categoria+"\n"+ubicacion;
     }
 };

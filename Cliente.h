@@ -6,27 +6,29 @@
 #include <thread>
 #include <filesystem>
 #include <dirent.h>
-#include <QtCore/QDir>
-using namespace std;
+#include <QtCore>
+#include <QListWidget>
+
+using namespace std::chrono_literals;
 
 struct Cliente{
-    string Codigo;
-    string Nombre;
+    std::string Codigo;
+    std::string Nombre;
     int Prioridad;
 
     Cliente(){
-        string Codigo = "";
-        string Nombre= "";
+        std::string Codigo = "";
+        std::string Nombre= "";
         int Prioridad = 0;
     }
-    Cliente(string Codigo_entrada, string Nombre_entrada, int Prioridad_entrada){
+    Cliente(std::string Codigo_entrada, std::string Nombre_entrada, int Prioridad_entrada){
         Codigo = Codigo_entrada;
         Nombre = Nombre_entrada;
         Prioridad = Prioridad_entrada;
     }
 //DECLARACION D FUNCIONES:
-    string to_string();
+    std::string to_string();
 };
 
-int pos_d_cliente(string,Cliente*,int);
-string *adv_tokenizer(string s, char del);
+int pos_d_cliente(std::string,Cliente*,int);
+std::string *adv_tokenizer(std::string s, char del);

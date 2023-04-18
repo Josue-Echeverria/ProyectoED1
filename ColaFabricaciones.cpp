@@ -60,14 +60,14 @@ NodoPedido* ColaPedidos::desencolar(void)
 
 void ColaPedidos::imprimir(void)
 {
-    cout << "Frente->";
+    std::cout << "Frente->";
     NodoPedido *tmp = frente;
     while (tmp != NULL)
     {
-        cout << tmp->pedido->prioridad << "-" ;  //hacer el imprimir
+        std::cout << tmp->pedido->prioridad << "-" ;  //hacer el imprimir
         tmp = tmp->sig;
     }
-    cout << ">Final" << endl;
+    std::cout << ">Final" << std::endl;
 }
 
 NodoPedido* ColaPedidos::verFrente()
@@ -75,21 +75,19 @@ NodoPedido* ColaPedidos::verFrente()
     return frente;
 }
 
-ColaPedidos *leer_pedidos(ListaClientes* Clientes,Almacen *almacen){
+void leer_pedidos(ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
     QDir dir("C:/Users/Asus/Repositories/ProyectoED1/Pedidos");
-    ColaPedidos *pedidos = new ColaPedidos();
     if (dir.exists())
     {
         QStringList files = dir.entryList(QDir::Files | QDir::NoDotAndDotDot);
         Pedidos *Leido;
         for (const QString& file : files){
-            std::cout << file.toStdString() << std::endl;
+            //std::cout << file.toStdString() << std::endl;
             Leido = leer_archivo_pedido(file.toStdString(),Clientes,almacen);
             if(Leido == NULL)
                 continue;
             pedidos->encolarPedido_x_prioridad(Leido);
-            pedidos->imprimir();
+            //pedidos->imprimir();
         }
     }
-    return pedidos;
 }

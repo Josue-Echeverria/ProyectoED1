@@ -27,5 +27,5 @@ struct ColaPedidos{
     void imprimir(void);
 
 };
-ColaPedidos *leer_pedidos(ListaClientes*,Almacen*);
+void leer_pedidos(ColaPedidos*,ListaClientes*,Almacen*);
 

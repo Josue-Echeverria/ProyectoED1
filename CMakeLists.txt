@@ -26,6 +26,8 @@ set(PROJECT_SOURCES
         Producto.h
         Pedidos.h
         Pedidos.cpp
+        Pedidos_Thread.h
+        Pedidos_Thread.cpp
         main.cpp
         mainwindow.cpp
         mainwindow.h

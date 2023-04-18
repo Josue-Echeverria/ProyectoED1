@@ -1,36 +1,35 @@
 
 #include "mainwindow.h"
 #include <QApplication>
-
 #include <QFile>
+
+void x(ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
+    while(true){
+
+        leer_pedidos(pedidos,Clientes,almacen);
+        pedidos->imprimir();
+
+        std::this_thread::sleep_for(5000ms);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+// std::thread thread_lectura_pedidos(x,Pedidos,Clientes,Almacen);
 
-    ifstream archivoProductos("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt");
-    Almacen *Almacen = leer_productos(&archivoProductos);
-    archivoProductos.close();
-
-    ifstream archivoClientes("C:/Users/Asus/Repositories/ProyectoED1/Clientes.txt");
-    ListaClientes *Clientes = leerClientes(&archivoClientes);
-    archivoClientes.close();
+   // std::thread t2(function2);
 
 
+    //t2.join();
 
-    ColaPedidos *Pedidos = leer_pedidos(Clientes,Almacen);
-    Pedidos->imprimir();
 
-/*
-    QListWidget *Pedidos_n_pantalla = findChild<QListWidget*>("listWidget_Pedidos");
-    NodoPedido *tmp = Pedidos->frente;
-    while(tmp){
-        Pedidos_n_pantalla->addItem(QString::fromStdString(to_string(tmp->pedido->prioridad)));
-        tmp = tmp->sig;
-    }*/
+//
 
-    w.show();
-
+   w.show();
+ //   thread_lectura_pedidos.join();
 
     return a.exec();
+
 }

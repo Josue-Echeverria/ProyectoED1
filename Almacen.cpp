@@ -1,6 +1,6 @@
 #include "Almacen.h"
 #include <bits/stdc++.h>
-void Almacen::instertar_producto(string codigo_entrada,int cantidad_entrada,int duracion_entrada,char categoria_entrada,string posicion_entrada){
+void Almacen::instertar_producto(std::string codigo_entrada,int cantidad_entrada,int duracion_entrada,char categoria_entrada,std::string posicion_entrada){
     int letra = posicion_entrada[0]-65;
     int num1 = (posicion_entrada[1]-48)*10;
     int num2 = posicion_entrada[2]-48;
@@ -10,7 +10,7 @@ void Almacen::instertar_producto(string codigo_entrada,int cantidad_entrada,int 
 
 
 
-int validacion(string *linea){
+int validacion(std::string *linea){
     try{// Se confirma que los datos de la cantidad y la duracion de fabricacion del producto sean numeros
         if(stoi(linea[2])<0 || stoi(linea[1])<0)
             return -1;
@@ -26,13 +26,13 @@ int validacion(string *linea){
     return 0;
 }
 
-Almacen *leer_productos(ifstream *archivoProductos){
+Almacen *leer_productos(std::ifstream *archivoProductos){
     if (!archivoProductos->is_open()) {
         std::cerr << "Failed to open Productos file!" << std::endl;
         return NULL;
     } else {
-        string str = "";
-        string *linea;
+        std::string str = "";
+        std::string *linea;
         int duracion_d_fabricacion;
         int cantidad;
         Almacen *almacen_2_return = new Almacen();
@@ -58,14 +58,14 @@ Almacen *leer_productos(ifstream *archivoProductos){
 
             }//Si no callo en un ninguno de los casos es por que retornó un 0 y la linea es valida
             almacen_2_return->instertar_producto(linea[0],stoi(linea[1]),stoi(linea[2]),linea[3][0],linea[4]);
-            cout<<str<<endl;
+            std::cout<<str<<std::endl;
             str.clear();
         }
         return almacen_2_return;
     }
 }
 
-Producto *Almacen::existeProducto(string codigo){
+Producto *Almacen::existeProducto(std::string codigo){
     for(int i = 0; i <10;i++){
         for(int j = 0;j<26;j++){
             if(matriz_productos[i][j]->codigo_producto == codigo)

@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "ColaFabricaciones.h"
+#include "Pedidos_Thread.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>
@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     MainWindow(QWidget *parent = nullptr);
+    Pedidos_Thread *pedidos_thread;
 
     ~MainWindow();
 

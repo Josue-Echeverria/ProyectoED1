@@ -4,24 +4,24 @@ struct Pedidos
 {
 
     int numero_pedido;
-    string codigo_cliente;
+    std::string codigo_cliente;
     int prioridad;
     int contador_productos = 0;
 
     ListaProductos *Productos;
 
     Pedidos(){};
-    Pedidos(int numero_pedido_entrada,string codigo_cliente_entrada,int prioridad_entrada) {
+    Pedidos(int numero_pedido_entrada,std::string codigo_cliente_entrada,int prioridad_entrada) {
         numero_pedido = numero_pedido_entrada;
         codigo_cliente = codigo_cliente_entrada;
 
         Productos = new ListaProductos();
         prioridad = prioridad_entrada;
     }
-    void aniadir_producto(string,int);
+    void aniadir_producto(std::string,int);
 
 
 };
-Pedidos *leer_archivo_pedido(string ,ListaClientes* ,Almacen* );
+Pedidos *leer_archivo_pedido(std::string ,ListaClientes* ,Almacen* );
 
-void goto_archivos_erroneos(string);
+void goto_archivos_erroneos(std::string);

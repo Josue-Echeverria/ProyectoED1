@@ -20,14 +20,14 @@ void ListaClientes::insertar(Cliente *p){
 
 
 
-ListaClientes* leerClientes(ifstream *archivoClientes){
+ListaClientes* leerClientes(std::ifstream *archivoClientes){
 
-    string str = "";
+    std::string str = "";
     if (!archivoClientes->is_open()) {
         std::cerr << "Failed to open Clientes file!" << std::endl;
     }
     ListaClientes *Clientes = new ListaClientes();
-    string* linea;
+    std::string* linea;
     //Se recorre el array para leer cada una de las lineas de informacion sobre los clientes
     while(getline(*archivoClientes,str)){
         std::cout<<str<<std::endl;
@@ -48,7 +48,7 @@ ListaClientes* leerClientes(ifstream *archivoClientes){
     return Clientes;
 }
 
-int ListaClientes::prioridad_cliente(string codigo){
+int ListaClientes::prioridad_cliente(std::string codigo){
     NodoCliente *tmp = primero;
     while(tmp){
         if(tmp->client->Codigo == codigo)

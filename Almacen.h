@@ -10,9 +10,9 @@ struct Almacen
             }
         }
     }
-    void instertar_producto(string,int,int,char,string);
-    Producto *existeProducto(string);
+    void instertar_producto(std::string,int,int,char,std::string);
+    Producto *existeProducto(std::string);
     bool existeCant(Producto *, int);
     void modificarCant(Producto *, int);
 };
-Almacen *leer_productos(ifstream*);
+Almacen *leer_productos(std::ifstream*);

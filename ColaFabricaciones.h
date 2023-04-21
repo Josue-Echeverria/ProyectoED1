@@ -25,7 +25,7 @@ struct ColaPedidos{
     NodoPedido* verFrente(void);
     bool vacia(void);
     void imprimir(void);
-
+    Pedidos *buscar_pedido(int);
 };
-void leer_pedidos(ColaPedidos*,ListaClientes*,Almacen*);
+void leer_pedidos(QDir,ColaPedidos*,ListaClientes*,Almacen*);
 

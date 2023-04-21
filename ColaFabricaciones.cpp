@@ -27,13 +27,13 @@ void ColaPedidos::encolarPedido_x_prioridad (Pedidos * p){
 
         int counter = 0;
         while (actual->sig != NULL){
-            if((actual->sig->pedido->prioridad) < (p->prioridad))
+            if((actual->sig->pedido->Cliente->Prioridad) < (p->Cliente->Prioridad))
                 break;
             actual = actual->sig;
             counter++;
         }
         //If para cuando el pedido de entrada sea mayor al pedido del frente
-        if(((actual->pedido->prioridad) < (p->prioridad))&(counter == 0)){
+        if(((actual->pedido->Cliente->Prioridad) < (p->Cliente->Prioridad))&(counter == 0)){
             nuevo->sig = actual;
             frente = nuevo;
         } else {
@@ -64,7 +64,7 @@ void ColaPedidos::imprimir(void)
     NodoPedido *tmp = frente;
     while (tmp != NULL)
     {
-        std::cout << tmp->pedido->prioridad << "-" ;  //hacer el imprimir
+        std::cout << tmp->pedido->Cliente->Prioridad << "-" ;  //hacer el imprimir
         tmp = tmp->sig;
     }
     std::cout << ">Final" << std::endl;
@@ -75,8 +75,20 @@ NodoPedido* ColaPedidos::verFrente()
     return frente;
 }
 
-void leer_pedidos(ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
-    QDir dir("C:/Users/Asus/Repositories/ProyectoED1/Pedidos");
+Pedidos* ColaPedidos::buscar_pedido(int codigo){
+
+    NodoPedido *tmp = frente;
+    while (tmp != NULL){
+        if(tmp->pedido->numero_pedido == codigo){
+            return tmp->pedido;
+        }
+        tmp = tmp->sig;
+    }
+    return NULL;
+}
+
+
+void leer_pedidos(QDir dir,ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
     if (dir.exists())
     {
         QStringList files = dir.entryList(QDir::Files | QDir::NoDotAndDotDot);
@@ -86,6 +98,9 @@ void leer_pedidos(ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen)
             Leido = leer_archivo_pedido(file.toStdString(),Clientes,almacen);
             if(Leido == NULL)
                 continue;
+            if(pedidos->buscar_pedido(Leido->numero_pedido)!= NULL){
+                continue;
+            }
             pedidos->encolarPedido_x_prioridad(Leido);
             //pedidos->imprimir();
         }

@@ -8,6 +8,7 @@ public:
         this->Clientes = d;
         this->pedidos_interfaz = a;
         this->Pedidos = b;
+        this->dir = QDir("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/");
     }
 
     void run();
@@ -17,5 +18,6 @@ public:
     bool running;
     ColaPedidos *Pedidos;
     Almacen *Almacen;
+    QDir dir;
     ListaClientes *Clientes;
 };

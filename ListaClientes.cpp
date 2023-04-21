@@ -48,12 +48,13 @@ ListaClientes* leerClientes(std::ifstream *archivoClientes){
     return Clientes;
 }
 
-int ListaClientes::prioridad_cliente(std::string codigo){
+
+Cliente* ListaClientes::buscar_cliente(std::string id_cliente){
     NodoCliente *tmp = primero;
     while(tmp){
-        if(tmp->client->Codigo == codigo)
-            return tmp->client->Prioridad;
+        if(tmp->client->Codigo == id_cliente)
+            return tmp->client;
         tmp = tmp->sig;
     }
-    return -1;
+    return NULL;
 }

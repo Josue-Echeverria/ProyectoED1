@@ -1,3 +1,5 @@
+ERROR: El numero de pedido es invalido
+ERROR: El numero de pedido es invalido
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

@@ -3,15 +3,6 @@
 #include <QApplication>
 #include <QFile>
 
-void x(ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
-    while(true){
-
-        leer_pedidos(pedidos,Clientes,almacen);
-        pedidos->imprimir();
-
-        std::this_thread::sleep_for(5000ms);
-    }
-}
 
 int main(int argc, char *argv[])
 {

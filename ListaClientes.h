@@ -23,7 +23,7 @@ struct ListaClientes{
     void insertar (Cliente *p);
     bool vacia(void);
     void imprimir(void);
-    int prioridad_cliente(std::string);
+    Cliente *buscar_cliente(std::string);
 };
 ListaClientes *leerClientes(std::ifstream*);
 

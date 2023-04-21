@@ -14,6 +14,9 @@ void goto_archivos_erroneos(std::string nombre_archivo){
     }
 }
 
+std::string Pedidos::to_string(){
+    return std::to_string(numero_pedido) + "\t" +"("+std::to_string(Cliente->Prioridad)+")"+Cliente->Nombre;
+}
 
 Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,Almacen *almacen){
     int counter = 0;
@@ -34,8 +37,8 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             return NULL;// El numero de pedido no es un numero retorna null
         }
         getline(archivoPedidos,str);//Se saca la segunda linea del archivo(Codigo del cliente)
-        int pos = Clientes->prioridad_cliente(str);
-        if (pos == -1){// Se confirma que el cliente realizando el pedido dentro de la lista de clientes
+        Cliente *Cliente_entrada = Clientes->buscar_cliente(str);
+        if (Cliente_entrada == NULL){// Se confirma que el cliente realizando el pedido dentro de la lista de clientes
             std::cout<<"USUARIO INEXISTENTE"<<std::endl;
             archivoPedidos.close();
             goto_archivos_erroneos(nombre_archivo);//Se manda el archivo a la dir con todos los archivos con errores
@@ -46,7 +49,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             // *Codigo de clientes valido
             // Por lo tanto se leeran los productos para el pedido
             std::string* linea;
-            pedido_leido = new Pedidos(numero_d_pedido,str,pos);
+            pedido_leido = new Pedidos(numero_d_pedido,Cliente_entrada);
             //El siguiente while es para leer los productos que van con el pedido
             while(getline(archivoPedidos,str)){
                // cout<<str<<endl;

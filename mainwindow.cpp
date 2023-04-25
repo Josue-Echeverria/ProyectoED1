@@ -28,12 +28,63 @@ MainWindow::MainWindow(QWidget *parent)
     QListWidget *Pedidos_n_pantalla = findChild<QListWidget*>("listWidget_Pedidos");
     pedidos_thread = new Pedidos_Thread(Pedidos_n_pantalla,Pedidos,Almacen,Clientes);
     pedidos_thread->start();
-
-
-
+    fabricas_thread = new Fabricas(Almacen, findChild<QLabel*>("labelFabA"), findChild<QLabel*>("labelFabB"), findChild<QLabel*>("labelFabC"), findChild<QLabel*>("labelFabCom"));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_pushButton_detenerfabrica_a_clicked()
+{
+    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+        fabricas_thread->detenerFabrica(0);
+        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+    }
+    else{
+        fabricas_thread->reanudarFabrica(0);
+        ui->pushButton_detenerfabrica_a->setText("Detener");
+    }
+}
+
+
+void MainWindow::on_pushButton_detenerfabrica_b_clicked()
+{
+    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+        fabricas_thread->detenerFabrica(1);
+        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+    }
+    else{
+        fabricas_thread->reanudarFabrica(1);
+        ui->pushButton_detenerfabrica_a->setText("Detener");
+    }
+}
+
+
+void MainWindow::on_pushButton_detenerfabrica_c_clicked()
+{
+    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+        fabricas_thread->detenerFabrica(2);
+        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+    }
+    else{
+        fabricas_thread->reanudarFabrica(2);
+        ui->pushButton_detenerfabrica_a->setText("Detener");
+    }
+}
+
+
+void MainWindow::on_pushButton_detenerfabrica_comodin_clicked()
+{
+    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+        fabricas_thread->detenerFabrica(3);
+        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+    }
+    else{
+        fabricas_thread->reanudarFabrica(3);
+        ui->pushButton_detenerfabrica_a->setText("Detener");
+    }
+}
+
+

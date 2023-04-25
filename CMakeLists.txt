@@ -19,6 +19,10 @@ set(PROJECT_SOURCES
         ListaClientes.cpp
         ColaFabricaciones.cpp
         ColaFabricaciones.h
+        BalanceadorThread.h
+        BalanceadorThread.cpp
+        Fabrica.h
+        Fabrica.cpp
         Almacen.h
         Almacen.cpp
         Cliente.h

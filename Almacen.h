@@ -1,3 +1,5 @@
+#ifndef ALMACEN_H
+#define ALMACEN_H
 #include "ListaProductos.h"
 
 struct Almacen
@@ -16,3 +18,5 @@ struct Almacen
     void modificarCant(Producto *, int);
 };
 Almacen *leer_productos(std::ifstream*);
+
+#endif

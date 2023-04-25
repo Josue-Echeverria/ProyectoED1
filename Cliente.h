@@ -1,3 +1,5 @@
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -8,7 +10,6 @@
 #include <dirent.h>
 #include <QtCore>
 #include <QListWidget>
-
 using namespace std::chrono_literals;
 
 struct Cliente{
@@ -32,3 +33,5 @@ struct Cliente{
 
 int pos_d_cliente(std::string,Cliente*,int);
 std::string *adv_tokenizer(std::string s, char del);
+
+#endif

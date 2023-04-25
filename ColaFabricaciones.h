@@ -1,5 +1,6 @@
+#ifndef COLAFABRICACIONES_H
+#define COLAFABRICACIONES_H
 #include "Pedidos.h"
-
 struct NodoPedido{
     Pedidos *pedido;
     NodoPedido* sig;
@@ -29,3 +30,4 @@ struct ColaPedidos{
 };
 void leer_pedidos(QDir,ColaPedidos*,ListaClientes*,Almacen*);
 
+#endif

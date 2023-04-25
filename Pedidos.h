@@ -2,7 +2,6 @@
 
 struct Pedidos
 {
-
     int numero_pedido;
     Cliente* Cliente;
     int contador_productos = 0;

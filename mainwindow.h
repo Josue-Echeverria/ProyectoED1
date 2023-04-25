@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "Pedidos_Thread.h"
+#include "Fabrica.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>
@@ -18,10 +19,20 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     Pedidos_Thread *pedidos_thread;
-
+    Fabricas *fabricas_thread;
     ~MainWindow();
 
 private slots:
+
+    void on_pushButton_detenerfabrica_a_clicked();
+
+    void on_pushButton_detenerfabrica_b_clicked();
+
+    void on_pushButton_detenerfabrica_c_clicked();
+
+    void on_pushButton_detenerfabrica_comodin_clicked();
+
+    void on_pushButton_detenerfabrica_a_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;

@@ -1,5 +1,6 @@
 #include "ColaFabricaciones.h"
 
+
 class Pedidos_Thread : public QThread{
 public:
     Pedidos_Thread(){};

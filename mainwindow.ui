@@ -55,39 +55,6 @@
     <property name="title">
      <string>Fabricas</string>
     </property>
-    <widget class="QTreeWidget" name="treeWidget_fabricas">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>511</width>
-       <height>192</height>
-      </rect>
-     </property>
-     <property name="columnCount">
-      <number>4</number>
-     </property>
-     <column>
-      <property name="text">
-       <string>FabricaA</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>FabricaB</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>FabricaC</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>FabricaComodin</string>
-      </property>
-     </column>
-    </widget>
     <widget class="QPushButton" name="pushButton_detenerfabrica_a">
      <property name="geometry">
       <rect>
@@ -138,6 +105,58 @@
      </property>
      <property name="text">
       <string>Detener</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFabA">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>70</y>
+       <width>81</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fabrica A</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFabB">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>70</y>
+       <width>81</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fabrica B</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFabC">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>70</y>
+       <width>81</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fabrica C</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFabCom">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>70</y>
+       <width>81</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Fabrica Com</string>
      </property>
     </widget>
    </widget>
@@ -246,7 +265,7 @@
      <x>0</x>
      <y>0</y>
      <width>1118</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

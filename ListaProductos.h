@@ -1,3 +1,5 @@
+#ifndef LISTAPRODUCTOS_H
+#define LISTAPRODUCTOS_H
 #include "Producto.h"
 
 struct NodoProducto{
@@ -24,3 +26,5 @@ struct ListaProductos{
     void imprimir(void);
 
 };
+
+#endif

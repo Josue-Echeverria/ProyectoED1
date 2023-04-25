@@ -1,3 +1,5 @@
+#ifndef PRODUCTOS_H
+#define PRODUCTOS_H
 #include "ListaClientes.h"
 
 struct Producto{
@@ -13,7 +15,8 @@ struct Producto{
         char categoria;
         std::string ubicacion = "";
     };
-    Producto(std::string codigo_producto_entrada,int cantidad_entrada){
+    Producto(std::string codigo_producto_entrada,int cantidad_entrada,std::string posicion_entrada){
+        ubicacion = posicion_entrada;
         cantidad = cantidad_entrada;
         codigo_producto = codigo_producto_entrada;
     }
@@ -31,3 +34,4 @@ struct Producto{
         return codigo_producto+"\n"+std::to_string(cantidad)+"\n"+std::to_string(duracion_d_fabricacion)+"\n"+categoria+"\n"+ubicacion;
     }
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef PEDIDOS_H
+#define PEDIDOS_H
 #include "Almacen.h"
 
 struct Pedidos
@@ -22,3 +24,5 @@ struct Pedidos
 Pedidos *leer_archivo_pedido(std::string ,ListaClientes* ,Almacen* );
 
 void goto_archivos_erroneos(std::string);
+
+#endif

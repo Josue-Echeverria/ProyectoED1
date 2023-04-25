@@ -10,6 +10,10 @@
 #include <dirent.h>
 #include <QtCore>
 #include <QListWidget>
+#include <QTabWidget>
+#include <QPlainTextEdit>
+#include <QTextBrowser>
+
 using namespace std::chrono_literals;
 
 struct Cliente{

@@ -11,10 +11,12 @@
 class BalanceadorThread : public QThread
 {
 public:
-    BalanceadorThread(Almacen *almacen, ColaPedidos* cola, QLabel* label_Balanceador, Fabricas * fab)
+    BalanceadorThread(Almacen *almacen, ColaPedidos* cola,ColaPedidos* colaa, QLabel* label_Balanceador, Fabricas * fab)
     {
         running = true;
+        this->almacen = almacen;
         this->cola = cola;
+        this->cola_alistos = colaa;
         this->label = label_Balanceador;
         this->fabricas = fab;
     }
@@ -27,13 +29,11 @@ public:
                 if(!cola->vacia()){
                     QString qstr = QString::fromStdString(cola->verFrente()->pedido->to_string());
                     label->setText(qstr);
-                    almacen->imprimirMa();
-                    std::cout<<"llego12"<<std::endl;
                     if(verificarAlisto(cola->verFrente()->pedido) != 0){
-                        std::cout<<"llego1"<<std::endl;
                         QThread::sleep(verificarAlisto(cola->verFrente()->pedido));
                     }
-                    cola->desencolar();
+                    label->clear();
+                    this->cola_alistos->encolarPedido(cola->desencolar()->pedido);
                 }
                 QThread::sleep(1);
             }
@@ -50,10 +50,10 @@ public:
         NodoProducto *aux = ped->Productos->primero;
         int duracion = 0;
         while(aux){
+            //std::cout<<aux->producto->ubicacion<<std::endl;
             Producto * enAlmacen = almacen ->existeProducto(aux->producto->codigo_producto);
-            enAlmacen->to_string_in_almacen();
+            //std::cout<<enAlmacen->to_string_in_almacen()<<std::endl;
             if(almacen->existeCant(enAlmacen, aux->producto->cantidad) == false){
-                std::cout<<"llego3"<<std::endl;
                 int cant = aux->producto->cantidad - almacen->cantEnAlmacen(enAlmacen);
                 fabricas ->fabricar(enAlmacen->codigo_producto, cant);
                 enAlmacen->cantidad = 0;
@@ -68,6 +68,7 @@ public:
 private:
     bool running;
     ColaPedidos* cola;
+    ColaPedidos* cola_alistos;
     QLabel* label;
     Almacen *almacen;
     Fabricas *fabricas;

@@ -1,3 +1,5 @@
+#ifndef PEDIDOSTHREAD_H
+#define PEDIDOSTHREAD_H
 #include "ColaFabricaciones.h"
 
 
@@ -22,3 +24,4 @@ public:
     QDir dir;
     ListaClientes *Clientes;
 };
+#endif

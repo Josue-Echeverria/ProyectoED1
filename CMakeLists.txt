@@ -15,6 +15,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(PROJECT_SOURCES
         ListaProductos.h
         ListaProductos.cpp
+        Alistos_Thread.cpp
+        Alistos_Thread.h
+        Alistador_Thread.cpp
+        Alistador_Thread.h
+        Alistados_thread.h
+        Alistados_thread.cpp
         ListaClientes.h
         ListaClientes.cpp
         ColaFabricaciones.cpp

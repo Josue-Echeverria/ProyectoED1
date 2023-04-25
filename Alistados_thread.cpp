@@ -1,10 +1,8 @@
-#include "Pedidos_Thread.h"
+#include "Alistados_thread.h"
 
-
-void Pedidos_Thread::run(){
+void Alistados_Thread::run(){
     this->running = true;
     while(true){
-        leer_pedidos(this->dir,this->Pedidos,this->Clientes,this->Almacen);
         NodoPedido *tmp = Pedidos->frente;
         this->pedidos_interfaz->clear();
         while(tmp){

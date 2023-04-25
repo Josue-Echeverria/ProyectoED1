@@ -17,13 +17,7 @@ struct Almacen
     bool existeCant(Producto *, int);
     void modificarCant(Producto *, int);
     int cantEnAlmacen(Producto *);
-    void imprimirMa(){
-        for(int i = 0; i <10;i++){
-            for(int j = 0;j<26;j++){
-                std::cout<<matriz_productos[i][j]->codigo_producto<<std::endl;
-            }
-        }
-    };
+
 };
 Almacen *leer_productos(std::ifstream*);
 

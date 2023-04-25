@@ -17,7 +17,7 @@
    <widget class="QGroupBox" name="groupBox_balanceador">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>240</x>
       <y>10</y>
       <width>271</width>
       <height>311</height>
@@ -59,7 +59,7 @@
    <widget class="QGroupBox" name="groupBox_fabrica">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>530</x>
       <y>10</y>
       <width>541</width>
       <height>281</height>
@@ -176,9 +176,9 @@
    <widget class="QGroupBox" name="groupBox_colaAlistos">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>330</y>
-      <width>251</width>
+      <x>20</x>
+      <y>340</y>
+      <width>201</width>
       <height>291</height>
      </rect>
     </property>
@@ -190,9 +190,22 @@
       <rect>
        <x>0</x>
        <y>20</y>
-       <width>251</width>
-       <height>271</height>
+       <width>201</width>
+       <height>221</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_deteneralistos">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>250</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detener</string>
      </property>
     </widget>
    </widget>
@@ -202,7 +215,7 @@
       <x>20</x>
       <y>10</y>
       <width>201</width>
-      <height>611</height>
+      <height>311</height>
      </rect>
     </property>
     <property name="title">
@@ -214,7 +227,7 @@
        <x>0</x>
        <y>20</y>
        <width>201</width>
-       <height>591</height>
+       <height>291</height>
       </rect>
      </property>
      <property name="maximumSize">
@@ -228,10 +241,10 @@
    <widget class="QGroupBox" name="groupBox_colaAlistados">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>330</y>
-      <width>251</width>
-      <height>311</height>
+      <x>650</x>
+      <y>340</y>
+      <width>201</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="title">
@@ -242,16 +255,16 @@
       <rect>
        <x>0</x>
        <y>20</y>
-       <width>251</width>
-       <height>251</height>
+       <width>201</width>
+       <height>221</height>
       </rect>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_deteneralistados">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>280</y>
+       <x>60</x>
+       <y>250</y>
        <width>83</width>
        <height>29</height>
       </rect>
@@ -261,15 +274,178 @@
      </property>
     </widget>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QGroupBox" name="groupBox_alistadores">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>350</y>
-      <width>161</width>
-      <height>192</height>
+      <x>240</x>
+      <y>340</y>
+      <width>391</width>
+      <height>291</height>
      </rect>
     </property>
+    <property name="title">
+     <string>Alistadores</string>
+    </property>
+    <widget class="QTabWidget" name="tabWidget_alistadores">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>391</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>5</number>
+     </property>
+     <widget class="QWidget" name="alistador1">
+      <attribute name="title">
+       <string>1</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>391</width>
+         <height>181</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="alistador2">
+      <attribute name="title">
+       <string>2</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>381</width>
+         <height>181</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="alistador3">
+      <attribute name="title">
+       <string>3</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>381</width>
+         <height>191</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="alistador4">
+      <attribute name="title">
+       <string>4</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>381</width>
+         <height>181</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="alistador5">
+      <attribute name="title">
+       <string>5</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>381</width>
+         <height>181</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="alistador6">
+      <attribute name="title">
+       <string>6</string>
+      </attribute>
+      <widget class="QTextBrowser" name="textBrowser_alistador6">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>381</width>
+         <height>181</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton_deteneralistador">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>250</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detener</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_empacador">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>330</y>
+      <width>221</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>El empacador esta empacado:</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <widget class="QPushButton" name="pushButton_detenerempacador">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>260</y>
+       <width>83</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detener</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -278,7 +454,7 @@
      <x>0</x>
      <y>0</y>
      <width>1118</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

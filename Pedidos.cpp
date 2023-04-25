@@ -2,7 +2,7 @@
 #define _POSIX_SOURCE
 /*
 void Pedidos::aniadir_producto(string nombre_producto_entrada, int cantidad_entrada){
-    Productos[contador_productos] = Producto(nombre_producto_entrada,cantidad_entrada);
+    Productos = Producto(nombre_producto_entrada,cantidad_entrada);
     contador_productos++;
 }*/
 void goto_archivos_erroneos(std::string nombre_archivo){
@@ -61,8 +61,13 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
                 } catch (...) {
                     continue;
                 }
+                Producto *p = almacen->existeProducto(linea[0]);
+                //std::cout<<p->ubicacion<<std::endl;
+                if(p != NULL){
+                    pedido_leido->Productos->insertar(new Producto(linea[0],counter,p->ubicacion));
+                }
+
                 //Se aniade el producto al pedido
-                pedido_leido->Productos->insertar(new Producto(linea[0],counter));
             }
             archivoPedidos.close();
             //std::cout<<nombre_archivo<<std::endl;
@@ -72,6 +77,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             if (rename(oldpath, newpath) != 0) {
                 perror("Error moving file");
             }
+            //std::cout<<pedido_leido->to_string()<<std::endl;
             return pedido_leido;
         }
     }

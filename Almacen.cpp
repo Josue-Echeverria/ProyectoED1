@@ -70,7 +70,6 @@ Producto *Almacen::existeProducto(std::string codigo){
     for(int i = 0; i <10;i++){
         for(int j = 0;j<26;j++){
             if(matriz_productos[i][j]->codigo_producto == codigo){
-                std::cout<<matriz_productos[i][j]->codigo_producto<<std::endl;
                 return matriz_productos[i][j];
             }
         }
@@ -78,8 +77,7 @@ Producto *Almacen::existeProducto(std::string codigo){
     return NULL;
 }
 
-bool Almacen::existeCant(Producto * prod, int cant){
-    std::cout<<"llego3"<<std::endl;
+bool Almacen::existeCant(Producto * prod, int cant){;
     if(prod->cantidad >= cant){
         return true;
     }

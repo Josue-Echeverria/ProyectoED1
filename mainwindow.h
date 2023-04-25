@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include "Pedidos_Thread.h"
 #include "Fabrica.h"
+#include "BalanceadorThread.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>
@@ -20,6 +21,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     Pedidos_Thread *pedidos_thread;
     Fabricas *fabricas_thread;
+    BalanceadorThread *balanceador_thread;
     ~MainWindow();
 
 private slots:
@@ -32,7 +34,6 @@ private slots:
 
     void on_pushButton_detenerfabrica_comodin_clicked();
 
-    void on_pushButton_detenerfabrica_a_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;

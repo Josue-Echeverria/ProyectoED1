@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
     pedidos_thread = new Pedidos_Thread(Pedidos_n_pantalla,Pedidos,Almacen,Clientes);
     pedidos_thread->start();
     fabricas_thread = new Fabricas(Almacen, findChild<QLabel*>("labelFabA"), findChild<QLabel*>("labelFabB"), findChild<QLabel*>("labelFabC"), findChild<QLabel*>("labelFabCom"));
+    balanceador_thread = new BalanceadorThread(Almacen, Pedidos, findChild<QLabel*>("labelBalanceador"), fabricas_thread);
+    balanceador_thread->start();
 }
 
 MainWindow::~MainWindow()

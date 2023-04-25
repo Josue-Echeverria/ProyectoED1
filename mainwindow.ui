@@ -42,6 +42,19 @@
       <string>Detener</string>
      </property>
     </widget>
+    <widget class="QLabel" name="labelBalanceador">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>251</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Balanceador</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_fabrica">
     <property name="geometry">

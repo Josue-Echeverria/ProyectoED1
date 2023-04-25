@@ -4,7 +4,8 @@ void Almacen::instertar_producto(std::string codigo_entrada,int cantidad_entrada
     int letra = posicion_entrada[0]-65;
     int num1 = (posicion_entrada[1]-48)*10;
     int num2 = posicion_entrada[2]-48;
-    matriz_productos[num1+num2][letra] = new Producto(codigo_entrada,cantidad_entrada,duracion_entrada,categoria_entrada,posicion_entrada);
+    if (num1+num2-1 >= 0 & num1+num2-1 <=9)
+        matriz_productos[num1+num2-1][letra] = new Producto(codigo_entrada,cantidad_entrada,duracion_entrada,categoria_entrada,posicion_entrada);
     //std::cout<<matriz_productos[num1+num2][letra]->to_string_in_almacen()<<std::endl;
 }
 
@@ -68,20 +69,28 @@ Almacen *leer_productos(std::ifstream *archivoProductos){
 Producto *Almacen::existeProducto(std::string codigo){
     for(int i = 0; i <10;i++){
         for(int j = 0;j<26;j++){
-            if(matriz_productos[i][j]->codigo_producto == codigo)
+            if(matriz_productos[i][j]->codigo_producto == codigo){
+                std::cout<<matriz_productos[i][j]->codigo_producto<<std::endl;
                 return matriz_productos[i][j];
+            }
         }
     }
     return NULL;
 }
 
 bool Almacen::existeCant(Producto * prod, int cant){
-    if(prod->cantidad >= cant)
+    std::cout<<"llego3"<<std::endl;
+    if(prod->cantidad >= cant){
         return true;
+    }
     return false;
 }
 
 void Almacen::modificarCant(Producto * prod, int cant){
     prod->cantidad -= cant;
+}
+
+int Almacen::cantEnAlmacen(Producto *prod){
+    return prod->cantidad;
 }
 

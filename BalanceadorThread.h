@@ -32,6 +32,7 @@ public:
                     if(verificarAlisto(cola->verFrente()->pedido) != 0){
                         QThread::sleep(verificarAlisto(cola->verFrente()->pedido));
                     }
+                    QThread::sleep(3);
                     label->clear();
                     this->cola_alistos->encolarPedido(cola->desencolar()->pedido);
                 }

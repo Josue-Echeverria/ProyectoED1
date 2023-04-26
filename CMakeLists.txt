@@ -29,6 +29,12 @@ set(PROJECT_SOURCES
         BalanceadorThread.cpp
         Fabrica.h
         Fabrica.cpp
+        Empacador.cpp
+        Empacador.h
+        Facturar_thread.cpp
+        Facturar_thread.h
+        Facturador_thread.h
+        Facturador_thread.cpp
         Almacen.h
         Almacen.cpp
         Cliente.h

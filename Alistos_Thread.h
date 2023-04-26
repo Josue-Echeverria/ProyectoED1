@@ -10,6 +10,8 @@ public:
         this->alistos_interfaz = a;
         this->Pedidos = b;
         this->alistadores = d;
+        running = true;
+        //alistadores[1]->running = false;
 
     }
 

@@ -1,5 +1,6 @@
 #include "Almacen.h"
 #include <bits/stdc++.h>
+#include <iostream>
 void Almacen::instertar_producto(std::string codigo_entrada,int cantidad_entrada,int duracion_entrada,char categoria_entrada,std::string posicion_entrada){
     int letra = posicion_entrada[0]-65;
     int num1 = (posicion_entrada[1]-48)*10;
@@ -9,7 +10,32 @@ void Almacen::instertar_producto(std::string codigo_entrada,int cantidad_entrada
     //std::cout<<matriz_productos[num1+num2][letra]->to_string_in_almacen()<<std::endl;
 }
 
+void escribir(std::ofstream *file,std::string str){
+    *file<<str.c_str();
+    file->flush();
+}
 
+
+
+
+std::string restar_cantidad_archivo(std::ifstream *archivoProductos,int cant,std::string codigo){
+    std::string str_archivo = "";
+    if (!archivoProductos->is_open()) {
+        std::cerr << "Error: could not open file!\n";
+    } else {
+        std::string line;
+        std::string str_archivo = "";
+        std::string *arr_line;
+        while (std::getline(*archivoProductos, line)) {
+            arr_line = adv_tokenizer(line,9);
+            if(arr_line[0] == codigo){
+                arr_line[1] = std::to_string(stoi(arr_line[1])-cant);
+            }
+            str_archivo += arr_line[0]+"\t"+arr_line[1]+"\t"+arr_line[2]+"\t"+arr_line[3]+"\t"+arr_line[4]+"\n";
+        }
+        return str_archivo;
+    }
+}
 
 int validacion(std::string *linea){
     try{// Se confirma que los datos de la cantidad y la duracion de fabricacion del producto sean numeros

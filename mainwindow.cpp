@@ -197,7 +197,7 @@ void MainWindow::on_pushButton_deteneralistador_clicked()
 }
 
 
-void MainWindow::on_pushButton_deteneralistador_2_clicked()
+void MainWindow::on_pushButton_reanudaralistador_clicked()
 {
     int index = ui->groupBox_alistadores->findChild<QTabWidget*>("tabWidget_alistadores")->currentIndex();
     switch(index){
@@ -244,5 +244,10 @@ void MainWindow::on_pushButton_detenerfacturador_clicked()
         facturador->reanudar();
         ui->pushButton_detenerfacturador->setText("Detener");
     }
+}
+
+void MainWindow::on_pushButton_detenerbalanceador_clicked()
+{
+
 }
 

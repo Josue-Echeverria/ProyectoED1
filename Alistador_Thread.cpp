@@ -6,8 +6,6 @@ void Alistador_Thread::run(){
         if(!this->running){
             std::this_thread::sleep_for(1000ms);
         } else {
-            //
-
             if(this->Pedidos != NULL){
                 this->ocupado = true;
                 //std::cout<<"DDDDDDDDDDD"<<std::endl;

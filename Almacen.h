@@ -20,5 +20,6 @@ struct Almacen
 
 };
 Almacen *leer_productos(std::ifstream*);
-
+void escribir(std::ofstream*,std::string);
+std::string restar_cantidad_archivo(std::ifstream *,int ,std::string );
 #endif

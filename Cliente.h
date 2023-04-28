@@ -34,7 +34,8 @@ struct Cliente{
 //DECLARACION D FUNCIONES:
     std::string to_string();
 };
-
+std::string read_all(std::ifstream);
+void write_error(std::ofstream*,std::string,std::string);
 int pos_d_cliente(std::string,Cliente*,int);
 std::string *adv_tokenizer(std::string s, char del);
 

@@ -10,11 +10,12 @@ void Empacador_thread::run(){
             if(this->Pedido != NULL){
                 this->ocupado = true;
                 this->empacador_interfaz->setText(QString::fromStdString(Pedido->to_string())+"\nProducto\tCantidad\n"+QString::fromStdString(Pedido->Productos->to_string_nombres()));
+                std::this_thread::sleep_for(1000ms);
                 this->Facturar->encolarPedido(this->Pedido);
             }
             this->Pedido = NULL;
             this->ocupado = false;
         }
-        std::this_thread::sleep_for(1000ms);
+        std::this_thread::sleep_for(500ms);
     }
 }

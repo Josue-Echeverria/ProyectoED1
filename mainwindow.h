@@ -37,7 +37,6 @@ public:
 
 private slots:
 
-    void on_pushButton_deteneralistos_clicked(bool checked);
 
     void on_pushButton_detenerfabrica_a_clicked();
 
@@ -54,11 +53,13 @@ private slots:
 
     void on_pushButton_deteneralistador_clicked();
 
-    void on_pushButton_deteneralistador_2_clicked();
-
     void on_pushButton_detenerempacador_clicked();
 
     void on_pushButton_detenerfacturador_clicked();
+
+    void on_pushButton_reanudaralistador_clicked();
+
+    void on_pushButton_detenerbalanceador_clicked();
 
 private:
     Ui::MainWindow *ui;

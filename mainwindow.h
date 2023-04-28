@@ -61,8 +61,6 @@ private slots:
 
     void on_pushButton_reanudaralistador_clicked();
 
-    void on_pushButton_detenerbalanceador_clicked();
-
 private:
     Ui::MainWindow *ui;
 };

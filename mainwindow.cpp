@@ -19,12 +19,12 @@ MainWindow::MainWindow(QWidget *parent)
      *
      */
  //  console->setText(QString::fromStdString(s));
-
-    std::ifstream archivoProductos("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt");
+    QMutex *mutex;
+    std::ifstream archivoProductos("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Productos.txt");
     Almacen *Almacen = leer_productos(&archivoProductos);
     archivoProductos.close();
 
-    std::ifstream archivoClientes("C:/Users/Asus/Repositories/ProyectoED1/Clientes.txt");
+    std::ifstream archivoClientes("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Clientes.txt");
     ListaClientes *Clientes = leerClientes(&archivoClientes);
     archivoClientes.close();
 
@@ -94,24 +94,24 @@ void MainWindow::on_pushButton_detenerfabrica_b_clicked()
 {
     if(fabricas_thread->arrayFabrica[1]->getRunning()){
         fabricas_thread->detenerFabrica(1);
-        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+        ui->pushButton_detenerfabrica_b->setText("Reanudar");
     }
     else{
         fabricas_thread->reanudarFabrica(1);
-        ui->pushButton_detenerfabrica_a->setText("Detener");
+        ui->pushButton_detenerfabrica_b->setText("Detener");
     }
 }
 
 
 void MainWindow::on_pushButton_detenerfabrica_c_clicked()
 {
-    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+    if(fabricas_thread->arrayFabrica[2]->getRunning()){
         fabricas_thread->detenerFabrica(2);
-        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+        ui->pushButton_detenerfabrica_c->setText("Reanudar");
     }
     else{
         fabricas_thread->reanudarFabrica(2);
-        ui->pushButton_detenerfabrica_a->setText("Detener");
+        ui->pushButton_detenerfabrica_c->setText("Detener");
     }
 }
 /*
@@ -132,11 +132,11 @@ void MainWindow::on_pushButton_detenerfabrica_comodin_clicked()
 {
     if(fabricas_thread->arrayFabrica[3]->getRunning()){
         fabricas_thread->detenerFabrica(3);
-        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+        ui->pushButton_detenerfabrica_comodin->setText("Reanudar");
     }
     else{
         fabricas_thread->reanudarFabrica(3);
-        ui->pushButton_detenerfabrica_a->setText("Detener");
+        ui->pushButton_detenerfabrica_comodin->setText("Detener");
     }
 }
 
@@ -245,12 +245,6 @@ void MainWindow::on_pushButton_detenerfacturador_clicked()
         ui->pushButton_detenerfacturador->setText("Detener");
     }
 }
-
-void MainWindow::on_pushButton_detenerbalanceador_clicked()
-{
-
-}
-
 
 void MainWindow::on_pushButton_detenerbalanceador_clicked()
 {

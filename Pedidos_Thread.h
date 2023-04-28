@@ -11,7 +11,7 @@ public:
         this->Clientes = d;
         this->pedidos_interfaz = a;
         this->Pedidos = b;
-        this->dir = QDir("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/");
+        this->dir = QDir("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/");
     }
 
     void run();

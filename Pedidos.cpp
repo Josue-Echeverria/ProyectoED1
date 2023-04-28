@@ -6,8 +6,8 @@ void Pedidos::aniadir_producto(string nombre_producto_entrada, int cantidad_entr
     contador_productos++;
 }*/
 void goto_archivos_erroneos(std::string nombre_archivo){
-    const char* oldpath = ("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo).c_str();
-    const char* newpath = ("C:/Users/Asus/Repositories/ProyectoED1/Pedidos_Erroneos/"+nombre_archivo).c_str();
+    const char* oldpath = ("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo).c_str();
+    const char* newpath = ("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos_Erroneos/"+nombre_archivo).c_str();
 
     if (rename(oldpath, newpath) != 0) {
         perror("Error moving file");
@@ -38,7 +38,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
     std::string str = "";
     int numero_d_pedido;
     Pedidos *pedido_leido;
-    std::ifstream archivoPedidos("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo);
+    std::ifstream archivoPedidos("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo);
     if (!archivoPedidos.is_open()) {
         std::cerr << "Failed to open Pedido file!" << std::endl;
         return NULL;
@@ -51,7 +51,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             archivoPedidos.seekg(0);
             std::string str_arc = read_all(&archivoPedidos);
             archivoPedidos.close();
-            std::ofstream filee("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo);
+            std::ofstream filee("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo);
             write_error(&filee,str_arc,"El pedido es invalido(No es un numero)(Linea 1)");
             filee.close();
             goto_archivos_erroneos(nombre_archivo);//Se manda el archivo a la dir con todos los archivos con errores
@@ -64,7 +64,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             archivoPedidos.seekg(0);
             std::string str_arc = read_all(&archivoPedidos);
             archivoPedidos.close();
-            std::ofstream filee("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo);
+            std::ofstream filee("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo);
             write_error(&filee,str_arc,"El usuario de este pedido no existe(Linea 2)");
             filee.close();
             goto_archivos_erroneos(nombre_archivo);//Se manda el archivo a la dir con todos los archivos con errores
@@ -92,7 +92,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
                     archivoPedidos.seekg(0);
                     std::string str_arc = read_all(&archivoPedidos);
                     archivoPedidos.close();
-                    std::ofstream filee("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo);
+                    std::ofstream filee("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo);
                     write_error(&filee,str_arc,"Cantidad de producto invalida o menor o igual a 0(Linea "+std::to_string(i)+")");
                     filee.close();
                     goto_archivos_erroneos(nombre_archivo);//Se manda el archivo a la dir con todos los archivos con errores
@@ -108,7 +108,7 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
                     archivoPedidos.seekg(0);
                     std::string str_arc = read_all(&archivoPedidos);
                     archivoPedidos.close();
-                    std::ofstream filee("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo);
+                    std::ofstream filee("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo);
                     write_error(&filee,str_arc,"El producto no existe(Linea "+std::to_string(i)+")");
                     filee.close();
                     goto_archivos_erroneos(nombre_archivo);//Se manda el archivo a la dir con todos los archivos con errores
@@ -119,8 +119,8 @@ Pedidos *leer_archivo_pedido(std::string nombre_archivo,ListaClientes* Clientes,
             }
             archivoPedidos.close();
             //std::cout<<nombre_archivo<<std::endl;
-            const char* oldpath = ("C:/Users/Asus/Repositories/ProyectoED1/Pedidos/"+nombre_archivo).c_str();
-            const char* newpath = ("C:/Users/Asus/Repositories/ProyectoED1/Pedidos_Leidos/"+nombre_archivo).c_str();
+            const char* oldpath = ("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos/"+nombre_archivo).c_str();
+            const char* newpath = ("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Pedidos_Leidos/"+nombre_archivo).c_str();
 
             if (rename(oldpath, newpath) != 0) {
                 perror("Error moving file");

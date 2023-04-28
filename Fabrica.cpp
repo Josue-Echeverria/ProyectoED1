@@ -1,8 +1,9 @@
 #include "Fabrica.h"
 
 void colaFab::encolarFabrica (string cod, int cant){
-    if (vacia())
+    if (vacia()){
         frente = new nodoFab (cod, cant);
+    }
     else
     {
         nodoFab* actual = frente;
@@ -54,26 +55,53 @@ int colaFab::cantEnCola(){
     }
 }
 
+bool colaFab::existe(string cod){
+    if(vacia()){
+        return false;
+    }else{
+        nodoFab *aux = frente;
+        while(aux){
+            if(aux->cod == cod)
+                return true;
+            aux = aux->sig;
+        }
+        return false;
+    }
+}
+
 int Fabricas::menorCola(int uno, int dos){
-    if(arrayFabrica[uno]->getCola()->cantEnCola() <= arrayFabrica[dos]->getCola()->cantEnCola())
-        return uno;
-    else
+    if(arrayFabrica[uno]->getCola()->cantEnCola() > arrayFabrica[dos]->getCola()->cantEnCola()){
         return dos;
+    }
+    else{
+        return uno;
+    }
 }
 void Fabricas::fabricar(string cod, int cant){
     Producto * prod = arrayFabrica [0]->getAlmacen()->existeProducto(cod);
     if (prod->categoria == 'C'){
         arrayFabrica[2]->getCola()->encolarFabrica(prod->codigo_producto, prod->cantidad * cant);
-    }
-    if (prod->categoria == 'A'){
+        return;
+    }else if (prod->categoria == 'A'){
         int menor = menorCola(0,3);
         arrayFabrica[menor]->getCola()->encolarFabrica(prod->codigo_producto, prod->duracion_d_fabricacion * cant);
-    }
-    if (prod->categoria == 'B'){
+        return;
+    }else if (prod->categoria == 'B'){
         int menor = menorCola(1,3);
         arrayFabrica[menor]->getCola()->encolarFabrica(prod->codigo_producto, prod->duracion_d_fabricacion * cant);
+        return;
     }
 }
+
+bool Fabricas::existeProd(string cod){
+    for(int i = 0; i <= 3; i++){
+        if(arrayFabrica[i]->getCola()->existe(cod)){
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 

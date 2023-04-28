@@ -74,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::on_pushButton_detenerfabrica_b_clicked()
 {
-    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+    if(fabricas_thread->arrayFabrica[1]->getRunning()){
         fabricas_thread->detenerFabrica(1);
         ui->pushButton_detenerfabrica_a->setText("Reanudar");
     }
@@ -112,7 +112,7 @@ void MainWindow::on_pushButton_deteneralistos_clicked(bool checked){
 
 void MainWindow::on_pushButton_detenerfabrica_comodin_clicked()
 {
-    if(fabricas_thread->arrayFabrica[0]->getRunning()){
+    if(fabricas_thread->arrayFabrica[3]->getRunning()){
         fabricas_thread->detenerFabrica(3);
         ui->pushButton_detenerfabrica_a->setText("Reanudar");
     }
@@ -122,4 +122,17 @@ void MainWindow::on_pushButton_detenerfabrica_comodin_clicked()
     }
 }
 
+
+
+void MainWindow::on_pushButton_detenerbalanceador_clicked()
+{
+    if(balanceador_thread->getRunning()){
+        balanceador_thread->pausar();
+        ui->pushButton_detenerfabrica_a->setText("Reanudar");
+    }
+    else{
+        balanceador_thread->reanudar();
+        ui->pushButton_detenerfabrica_a->setText("Detener");
+    }
+}
 

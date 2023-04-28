@@ -44,6 +44,8 @@ private slots:
     void on_pushButton_detenerfabrica_comodin_clicked();
 
 
+    void on_pushButton_detenerbalanceador_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

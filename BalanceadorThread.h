@@ -19,6 +19,7 @@ public:
         this->cola_alistos = colaa;
         this->label = label_Balanceador;
         this->fabricas = fab;
+        this->colaHold = new ColaPedidos();
     }
 
     void run()
@@ -26,14 +27,31 @@ public:
         while (true)
         {
             while(running){
+                QThread::sleep(1);
+                std::cout<<cola->vacia()<<" colita"<<std::endl;
                 if(!cola->vacia()){
                     QString qstr = QString::fromStdString(cola->verFrente()->pedido->to_string());
                     label->setText(qstr);
-                    if(verificarAlisto(cola->verFrente()->pedido) != 0){
-                        QThread::sleep(verificarAlisto(cola->verFrente()->pedido));
-                    }
-                    label->clear();
-                    this->cola_alistos->encolarPedido(cola->desencolar()->pedido);
+                    QThread::sleep(1);
+                    //if(running){
+                        if(verificarAlisto(cola->verFrente()->pedido) != 0){
+                            colaHold->encolarPedido(cola->desencolar()->pedido);
+                        }else{
+                            label->setText("Analizando Pedidos en cola");
+                            this->cola_alistos->encolarPedido(cola->desencolar()->pedido);
+                        }
+                    //}
+                }
+
+                if(!colaHold->vacia()){
+                    QString qstr = QString::fromStdString(colaHold->verFrente()->pedido->to_string());
+                    label->setText(qstr);
+                    QThread::sleep(1);
+                    //if(running){
+                        if(!verificarHold(colaHold->verFrente()->pedido)){
+                            this->cola_alistos->encolarPedido(colaHold->desencolar()->pedido);
+                        }
+                    //}
                 }
                 QThread::sleep(1);
             }
@@ -46,17 +64,18 @@ public:
     void reanudar(){
         running = true;
     }
+    bool getRunning(){
+        return running;
+    }
     int verificarAlisto(Pedidos *ped){
         NodoProducto *aux = ped->Productos->primero;
         int duracion = 0;
         while(aux){
-            //std::cout<<aux->producto->ubicacion<<std::endl;
             Producto * enAlmacen = almacen ->existeProducto(aux->producto->codigo_producto);
-            //std::cout<<enAlmacen->to_string_in_almacen()<<std::endl;
-            if(almacen->existeCant(enAlmacen, aux->producto->cantidad) == false){
+            if(!almacen->existeCant(enAlmacen, aux->producto->cantidad)){
                 int cant = aux->producto->cantidad - almacen->cantEnAlmacen(enAlmacen);
-                fabricas ->fabricar(enAlmacen->codigo_producto, cant);
                 enAlmacen->cantidad = 0;
+                fabricas ->fabricar(enAlmacen->codigo_producto, cant);
                 duracion += cant * aux->producto->duracion_d_fabricacion;
             }else{
                 enAlmacen->cantidad -= aux->producto->cantidad;
@@ -65,6 +84,17 @@ public:
         }
         return duracion;
     }
+    bool verificarHold(Pedidos *ped){
+        NodoProducto *aux = ped->Productos->primero;
+        while(aux){
+            if(fabricas->existeProd(aux->producto->codigo_producto)){
+                return true;
+            }
+            aux = aux->sig;
+        }
+        return false;
+    }
+
 private:
     bool running;
     ColaPedidos* cola;
@@ -72,6 +102,7 @@ private:
     QLabel* label;
     Almacen *almacen;
     Fabricas *fabricas;
+    ColaPedidos* colaHold;
 };
 
 #endif // BALANCEADORTHREAD_H

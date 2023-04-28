@@ -48,9 +48,7 @@ NodoPedido* ColaPedidos::desencolar(void)
     if (vacia())
     {
         return NULL;
-    }
-    else
-    {
+    }else{
         NodoPedido* borrado = frente;
         frente = frente->sig;
         borrado->sig = NULL;

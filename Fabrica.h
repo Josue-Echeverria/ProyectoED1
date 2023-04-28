@@ -29,6 +29,7 @@ struct colaFab{
     nodoFab* verFrente(void);
     bool vacia(void);
     int cantEnCola(void);
+    bool existe(string);
 };
 
 class FabricaThread : public QThread
@@ -45,21 +46,29 @@ public:
 
     void run()
     {
-        while (true)
-        {
+        while(true){
             while(running){
                 if(!cola->vacia()){
-                    QString qstr = QString::fromStdString(cola->verFrente()->cod);
-                    label->setText(qstr + QString::number(cola->verFrente()->cant) + "segundos");
-                    QThread::sleep(cola->verFrente()->cant);
-                    almacen->existeProducto(cola->verFrente()->cod)->cantidad += cola->verFrente()->cant / almacen->existeProducto(cola->verFrente()->cod)->duracion_d_fabricacion;
+                    int tiempo = cola->verFrente()->cant;
+                    while(tiempo >= 0){
+                        if(!running){
+                            QThread::sleep(1);
+                        }else{
+                            QString qstr = QString::fromStdString(cola->verFrente()->cod);
+                            label->setText(qstr + "\n" + QString::number(tiempo) + " segundos");
+                            tiempo--;
+                            QThread::sleep(1);
+                        }
+                    }
                     cola->desencolar();
+                    label->setText("Fabrica " + QString::fromStdString(codigo));
                 }
                 QThread::sleep(1);
             }
             QThread::sleep(1);
         }
     }
+
     void pausar(){
         running = false;
     }
@@ -99,6 +108,7 @@ struct Fabricas{
     void fabricar(string cod, int cant);
     void detenerFabrica(int fab){arrayFabrica[fab]->pausar();};
     void reanudarFabrica(int fab){arrayFabrica[fab]->reanudar();};
+    bool existeProd(string cod);
 };
 
 

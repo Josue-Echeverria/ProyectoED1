@@ -1,7 +1,7 @@
 #ifndef ALISTADORTHREAD_H
 #define ALISTADORTHREAD_H
 #include "Pedidos_Thread.h"
-
+#include <QLabel>
 
 class Alistador_Thread : public QThread{
 public:
@@ -9,18 +9,19 @@ public:
         this->Pedidos = NULL;
 
     }
-    Alistador_Thread(QTextBrowser* a,Almacen* c,ColaPedidos* d){
+    Alistador_Thread(QLabel* a,Almacen* c,ColaPedidos* d){
         this->Almacen = c;
         this->alistadores_interfaz = a;
-        this->alistadores_interfaz->setText("HOLAAAA");
+        //this->alistadores_interfaz->setText("HOLAAAA");
         this->Pedidos = NULL;
         this->Pedidos_listos = d;
     }
     void run();
 
 //private:
-
-    QTextBrowser* alistadores_interfaz;
+    void pausar(){running = false;}
+    void reanudar(){running = true;}
+    QLabel* alistadores_interfaz;
     bool running;
     bool ocupado;
     Pedidos *Pedidos;
@@ -31,7 +32,7 @@ public:
 struct Alistadores{
     Alistador_Thread *arrayAlistador[6];
 
-    Alistadores(Almacen* c,ColaPedidos* d,QTextBrowser *e,QTextBrowser *f,QTextBrowser *g,QTextBrowser *h,QTextBrowser *i,QTextBrowser *j){
+    Alistadores(Almacen* c,ColaPedidos* d,QLabel *e,QLabel *f,QLabel *g,QLabel *h,QLabel *i,QLabel *j){
         arrayAlistador[0] = new Alistador_Thread(e,c,d);
         arrayAlistador[1] = new Alistador_Thread(f,c,d);
         arrayAlistador[2] = new Alistador_Thread(g,c,d);
@@ -42,6 +43,7 @@ struct Alistadores{
         arrayAlistador[1]->start();
         arrayAlistador[2]->start();
         arrayAlistador[3]->start();
+
         arrayAlistador[4]->start();
         arrayAlistador[5]->start();
     }

@@ -8,6 +8,13 @@
 
 #include "ColaFabricaciones.h"
 
+
+
+
+
+
+
+
 class BalanceadorThread : public QThread
 {
 public:
@@ -70,6 +77,7 @@ public:
     int verificarAlisto(Pedidos *ped){
         NodoProducto *aux = ped->Productos->primero;
         int duracion = 0;
+        std::fstream file("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt", std::ios::in | std::ios::out); // open file for reading and writing
         while(aux){
             Producto * enAlmacen = almacen ->existeProducto(aux->producto->codigo_producto);
             if(!almacen->existeCant(enAlmacen, aux->producto->cantidad)){
@@ -77,11 +85,19 @@ public:
                 enAlmacen->cantidad = 0;
                 fabricas ->fabricar(enAlmacen->codigo_producto, cant);
                 duracion += cant * aux->producto->duracion_d_fabricacion;
+
             }else{
+                std::ifstream file("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt"); // open file for reading and writing
+                std::string a = restar_cantidad_archivo(&file,aux->producto->cantidad,aux->producto->codigo_producto);
+                file.close();
+                std::ofstream filee("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt"); // open file for reading and writing
+                escribir(&filee,a);
+                filee.close();
                 enAlmacen->cantidad -= aux->producto->cantidad;
             }
             aux = aux->sig;
         }
+        file.close();
         return duracion;
     }
     bool verificarHold(Pedidos *ped){

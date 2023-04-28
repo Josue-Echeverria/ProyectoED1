@@ -28,7 +28,7 @@ struct Producto{
         ubicacion = posicion_entrada;
     }
     std::string to_string_in_pedido(){
-        return codigo_producto+"\n"+std::to_string(cantidad);
+        return codigo_producto+"\t"+ubicacion;
     }
     std::string to_string_in_almacen(){
         return codigo_producto+"\n"+std::to_string(cantidad)+"\n"+std::to_string(duracion_d_fabricacion)+"\n"+categoria+"\n"+ubicacion;

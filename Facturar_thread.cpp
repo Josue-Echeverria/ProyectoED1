@@ -1,6 +1,6 @@
-#include "Alistados_thread.h"
+#include "Facturar_thread.h"
 
-void Alistados_Thread::run(){
+void Facturar_Thread::run(){
     this->running = true;
     while(true){
         this->pedidos_interfaz->clear();
@@ -14,11 +14,11 @@ void Alistados_Thread::run(){
             if(!this->running){
                 std::this_thread::sleep_for(1000ms);
             } else {
-                if(!this->empacador->ocupado && this->empacador->running)
-                    this->empacador->Pedido = this->Pedidos->desencolar()->pedido;
+
+                if(!this->facturador->ocupado && this->facturador->running)
+                    this->facturador->Pedido = this->Pedidos->desencolar()->pedido;
             }
         }
         std::this_thread::sleep_for(1000ms);
     }
-
 }

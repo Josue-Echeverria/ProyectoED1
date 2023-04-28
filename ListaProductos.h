@@ -24,7 +24,8 @@ struct ListaProductos{
     void insertar (Producto *p);
     bool vacia(void);
     void imprimir(void);
-
+    std::string to_string_pedido();
+    std::string to_string_nombres();
 };
 
 #endif

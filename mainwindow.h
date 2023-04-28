@@ -6,6 +6,8 @@
 #include "Alistador_Thread.h"
 #include "Alistados_thread.h"
 #include "BalanceadorThread.h"
+#include "Facturador_thread.h"
+#include "Facturar_thread.h"
 #include <QMainWindow>
 #include <QFile>
 #include <QDir>
@@ -26,14 +28,15 @@ public:
     Alistadores *alistadores_thread;
     Alistos_Thread *alistos_thread;
     Alistados_Thread *alistados_thread;
-
+    Empacador_thread *empacador;
     Fabricas *fabricas_thread;
     BalanceadorThread *balanceador_thread;
+    Facturador_thread *facturador;
+    Facturar_Thread *facturar_thread;
     ~MainWindow();
 
 private slots:
 
-    void on_pushButton_deteneralistos_clicked(bool checked);
 
     void on_pushButton_detenerfabrica_a_clicked();
 
@@ -43,6 +46,20 @@ private slots:
 
     void on_pushButton_detenerfabrica_comodin_clicked();
 
+
+    void on_pushButton_detenerbalanceador_clicked();
+
+    void on_pushButton_deteneralistos_clicked();
+
+    void on_pushButton_deteneralistados_clicked();
+
+    void on_pushButton_deteneralistador_clicked();
+
+    void on_pushButton_detenerempacador_clicked();
+
+    void on_pushButton_detenerfacturador_clicked();
+
+    void on_pushButton_reanudaralistador_clicked();
 
     void on_pushButton_detenerbalanceador_clicked();
 

@@ -92,16 +92,27 @@ Almacen *leer_productos(std::ifstream *archivoProductos){
     }
 }
 
-Producto *Almacen::existeProducto(std::string codigo){
+Producto *Almacen::existeProducto(Producto *prod){
     for(int i = 0; i <10;i++){
         for(int j = 0;j<26;j++){
-            if(matriz_productos[i][j]->codigo_producto == codigo){
+            if(matriz_productos[i][j]->codigo_producto == prod->codigo_producto){
                 return matriz_productos[i][j];
             }
         }
     }
     return NULL;
 }
+Producto *Almacen::existeProducto(std::string cod){
+    for(int i = 0; i <10;i++){
+        for(int j = 0;j<26;j++){
+            if(matriz_productos[i][j]->codigo_producto == cod){
+                return matriz_productos[i][j];
+            }
+        }
+    }
+    return NULL;
+}
+
 
 bool Almacen::existeCant(Producto * prod, int cant){;
     if(prod->cantidad >= cant){

@@ -5,13 +5,14 @@
 #include <QDebug>
 #include <QLabel>
 #include "Almacen.h"
+
 using namespace std;
 struct nodoFab{
-    string cod;
+    Producto *prod;
     int cant;
     nodoFab *sig;
-    nodoFab(string cod, int cant){
-        this->cod = cod;
+    nodoFab(Producto *prod, int cant){
+        this->prod = prod;
         this->cant = cant;
         sig = NULL;
     }
@@ -24,12 +25,12 @@ struct colaFab{
         frente = NULL;
     }
 
-    void encolarFabrica (string cod, int cant);
+    void encolarFabrica (Producto * prod, int cant);
     nodoFab* desencolar (void);
     nodoFab* verFrente(void);
     bool vacia(void);
     int cantEnCola(void);
-    bool existe(string);
+    bool existe(Producto * prod);
 };
 
 class FabricaThread : public QThread
@@ -41,7 +42,7 @@ public:
         this->almacen = almacen;
         this->label = labelFab;
         this->codigo = cod;
-        cola = new colaFab();
+        this->cola = new colaFab();
     }
 
     void run()
@@ -50,12 +51,13 @@ public:
             while(running){
                 QThread::sleep(1);
                 if(!cola->vacia()){
-                    int tiempo = cola->verFrente()->cant;
+                    nodoFab *primer = cola->verFrente();
+                    int tiempo = primer->prod->duracion_d_fabricacion * primer->cant;
                     while(tiempo >= 0){
                         if(!running){
                             QThread::sleep(1);
                         }else{
-                            QString qstr = QString::fromStdString(cola->verFrente()->cod);
+                            QString qstr = QString::fromStdString(primer->prod->codigo_producto);
                             label->setText(qstr + "\n" + QString::number(tiempo) + " segundos");
                             tiempo--;
                             QThread::sleep(1);
@@ -106,10 +108,10 @@ struct Fabricas{
         arrayFabrica [3]->start();
     }
     int menorCola(int uno, int dos);
-    void fabricar(string cod, int cant);
+    void fabricar(Producto * prod, int cant);
     void detenerFabrica(int fab){arrayFabrica[fab]->pausar();};
     void reanudarFabrica(int fab){arrayFabrica[fab]->reanudar();};
-    bool existeProd(string cod);
+    bool existeProd(Producto * prod);
 };
 
 

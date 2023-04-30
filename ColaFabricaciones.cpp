@@ -6,9 +6,10 @@ bool ColaPedidos::vacia (void)
 }
 
 void ColaPedidos::encolarPedido (Pedidos * p){
-    if (vacia())
+    if (vacia()){
         frente = new NodoPedido (p);
-    else
+        std::cout<<"despues delsexo"<<std::endl;
+    }else
     {
         NodoPedido* actual = frente;
         NodoPedido* nuevo = new NodoPedido (p);

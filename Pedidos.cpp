@@ -137,8 +137,8 @@ std::string Pedidos::getTime(){
     std::string year = std::to_string(1900 + ltm->tm_year);
     std::string month = std::to_string(1 + ltm->tm_mon);
     std::string day = std::to_string(ltm->tm_mday);
-    std::string timeHour = std::to_string(5+ltm->tm_hour);
-    std::string timeMinute = std::to_string(30+ltm->tm_min);
+    std::string timeHour = std::to_string(ltm->tm_hour);
+    std::string timeMinute = std::to_string(ltm->tm_min);
     std::string timeSecond = std::to_string(ltm->tm_sec);
     std::string hora = timeHour + ":" + timeMinute + ":" + timeSecond;
     return year + "-" + month + "-" + day + " " + hora;
@@ -155,8 +155,8 @@ void Pedidos::crearFactura(){
     std::string year = std::to_string(1900 + ltm->tm_year);
     std::string month = std::to_string(1 + ltm->tm_mon);
     std::string day = std::to_string(ltm->tm_mday);
-    std::string timeHour = std::to_string(5+ltm->tm_hour);
-    std::string timeMinute = std::to_string(30+ltm->tm_min);
+    std::string timeHour = std::to_string(ltm->tm_hour);
+    std::string timeMinute = std::to_string(ltm->tm_min);
     std::string timeSecond = std::to_string(ltm->tm_sec);
     std::string hora = timeHour + "-" + timeMinute + "-" + timeSecond;
     factura = "C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Facturas/" +  std::to_string(numero_pedido) + "_" + Cliente->Codigo + "_"+ year + "-" + month + "-" + day + " " + hora + ".txt";

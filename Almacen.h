@@ -13,6 +13,7 @@ struct Almacen
         }
     }
     void instertar_producto(std::string,int,int,char,std::string);
+    Producto *existeProducto(Producto *);
     Producto *existeProducto(std::string);
     bool existeCant(Producto *, int);
     void modificarCant(Producto *, int);

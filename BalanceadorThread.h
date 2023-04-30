@@ -34,16 +34,19 @@ public:
         while (true)
         {
             while(running){
+                QThread::sleep(1);
                 std::cout<<cola->vacia()<<" colita"<<std::endl;
                 if(!cola->vacia()){
                     QString qstr = QString::fromStdString(cola->verFrente()->pedido->to_string());
                     label->setText(qstr);
+                    cola->verFrente()->pedido->textoFactura += "Balanceador:\t" + cola->verFrente()->pedido->getTime() + "\n";
                     QThread::sleep(1);
                     if(running){
                         if(verificarAlisto(cola->verFrente()->pedido) != 0){
                             colaHold->encolarPedido(cola->desencolar()->pedido);
                         }else{
                             label->setText("Analizando Pedidos en cola");
+                            cola->verFrente()->pedido->textoFactura += "A alisto:\t" + cola->verFrente()->pedido->getTime() + "\n";
                             this->cola_alistos->encolarPedido(cola->desencolar()->pedido);
                         }
                     }
@@ -55,6 +58,7 @@ public:
                     QThread::sleep(1);
                     if(running){
                         if(!verificarHold(colaHold->verFrente()->pedido)){
+                            cola->verFrente()->pedido->textoFactura += "A alisto:\t" + cola->verFrente()->pedido->getTime() + "\n";
                             this->cola_alistos->encolarPedido(colaHold->desencolar()->pedido);
                         }
                     }

@@ -29,6 +29,7 @@ void Alistos_Thread::run(){
                 int posicion_alistador = buscar_alistador_libre();
                 //std::cout<<"Antes del if "<<std::endl;
                 if(!(posicion_alistador==-1)){
+
                     this->alistadores->arrayAlistador[posicion_alistador]->Pedidos = this->Pedidos->desencolar()->pedido;
                 }
             }

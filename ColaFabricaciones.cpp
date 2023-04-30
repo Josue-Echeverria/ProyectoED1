@@ -100,6 +100,8 @@ void leer_pedidos(QDir dir,ColaPedidos *pedidos,ListaClientes* Clientes,Almacen 
                 continue;
             }
             pedidos->encolarPedido_x_prioridad(Leido);
+            Leido->crearFactura();
+            Leido->textoFactura += std::to_string(Leido->numero_pedido) + "\n" + "Cliente: " + Leido->Cliente->Codigo + "\n" + "En cola:\t" + Leido->getTime() + "\n";
             //pedidos->imprimir();
         }
     }

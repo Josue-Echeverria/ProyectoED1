@@ -4,7 +4,7 @@
 void Pedidos_Thread::run(){
     this->running = true;
     while(true){
-        leer_pedidos(this->dir,this->Pedidos,this->Clientes,this->Almacen);
+        leer_pedidos(this->dir,this->Pedidos,this->Clientes,this->Almacen,this->pedidos_hechos);
         NodoPedido *tmp = Pedidos->frente;
         this->pedidos_interfaz->clear();
         while(tmp){

@@ -14,9 +14,9 @@ void Facturador_thread::run(){
                  *
                 */
                 this->Facturador_interfaz->setText(QString::fromStdString(Pedido->to_string()));
-                Pedido->txtFactura();
-                Pedido->textoFactura += "Finalizado:\t" + Pedido->getTime() + "\n";
 
+                Pedido->textoFactura += "Finalizado:\t" + Pedido->getTime() + "\n";
+Pedido->txtFactura();
             }
             this->Pedido = NULL;
             this->ocupado = false;

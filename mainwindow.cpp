@@ -20,18 +20,18 @@ MainWindow::MainWindow(QWidget *parent)
      */
  //  console->setText(QString::fromStdString(s));
     QMutex *mutex;
-    std::ifstream archivoProductos("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Productos.txt");
+    std::ifstream archivoProductos("C:/Users/Asus/Repositories/ProyectoED1/Productos.txt");
     Almacen *Almacen = leer_productos(&archivoProductos);
     archivoProductos.close();
 
-    std::ifstream archivoClientes("C:/Users/hdani/OneDrive/Escritorio/Tec semestre 1/datos/proyecto1/mio/Clientes.txt");
+    std::ifstream archivoClientes("C:/Users/Asus/Repositories/ProyectoED1/Clientes.txt");
     ListaClientes *Clientes = leerClientes(&archivoClientes);
     archivoClientes.close();
 
     ColaPedidos *Pedidos = new ColaPedidos();
-
+    lista_enteros *numeros_pedidos_nechos = new lista_enteros();
     QListWidget *Pedidos_n_pantalla = findChild<QListWidget*>("listWidget_Pedidos");
-    pedidos_thread = new Pedidos_Thread(Pedidos_n_pantalla,Pedidos,Almacen,Clientes);
+    pedidos_thread = new Pedidos_Thread(Pedidos_n_pantalla,Pedidos,Almacen,Clientes,numeros_pedidos_nechos);
     pedidos_thread->start();
 
     ColaPedidos *Pedidos_alistos = new ColaPedidos();

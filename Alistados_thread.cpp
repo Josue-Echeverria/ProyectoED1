@@ -15,6 +15,8 @@ void Alistados_Thread::run(){
                 std::this_thread::sleep_for(1000ms);
             } else {
                 if(!this->empacador->ocupado && this->empacador->running)
+                    this->Pedidos->frente->pedido->textoFactura += "Al empacador:\t"+this->Pedidos->frente->pedido->getTime() + "\n";
+
                     this->empacador->Pedido = this->Pedidos->desencolar()->pedido;
             }
         }

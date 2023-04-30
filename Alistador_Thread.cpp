@@ -8,13 +8,15 @@ void Alistador_Thread::run(){
         } else {
             if(this->Pedidos != NULL){
                 this->ocupado = true;
-                //std::cout<<"DDDDDDDDDDD"<<std::endl;
                 NodoProducto *tmp = this->Pedidos->Productos->primero;
                 int tiempo = 0;
+                int resultado = 0;
                 while(tmp){
                     std::string letra = tmp->producto->ubicacion;
                     //std::cout<<tmp->producto->ubicacion<<std::endl;
-                    tiempo += 2*((letra[0]-65) + ((((letra[1]-48)*10) + (letra[2]-48))-1));
+                    resultado = 2*((letra[0]-65) + ((((letra[1]-48)*10) + (letra[2]-48))-1));
+                    tiempo += resultado;
+                    this->Pedidos->textoFactura += tmp->producto->codigo_producto+"\t"+"Ubicacion:\t" + letra + " ("+std::to_string(resultado)+"segundos)"+"\n";
                     tmp = tmp->sig;
                 }
                 while(tiempo >= 0){
@@ -26,12 +28,13 @@ void Alistador_Thread::run(){
                         std::this_thread::sleep_for(1000ms);
                     }
                 }
+
                 this->alistadores_interfaz->setText("(Desocupado)");
                 this->Pedidos_listos->encolarPedido(Pedidos);
             }
             this->ocupado = false;
             this->Pedidos = NULL;
         }
-        std::this_thread::sleep_for(2000ms);
+        std::this_thread::sleep_for(1000ms);
     }
 }

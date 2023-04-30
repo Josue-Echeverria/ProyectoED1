@@ -29,7 +29,7 @@ void Alistos_Thread::run(){
                 int posicion_alistador = buscar_alistador_libre();
                 //std::cout<<"Antes del if "<<std::endl;
                 if(!(posicion_alistador==-1)){
-
+                    this->Pedidos->frente->pedido->textoFactura += "Con alistador "+std::to_string(posicion_alistador)+":\t" + this->Pedidos->frente->pedido->getTime() + "\n";
                     this->alistadores->arrayAlistador[posicion_alistador]->Pedidos = this->Pedidos->desencolar()->pedido;
                 }
             }

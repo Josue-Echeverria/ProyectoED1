@@ -86,7 +86,7 @@ Pedidos* ColaPedidos::buscar_pedido(int codigo){
 }
 
 
-void leer_pedidos(QDir dir,ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen){
+void leer_pedidos(QDir dir,ColaPedidos *pedidos,ListaClientes* Clientes,Almacen *almacen,lista_enteros *pedidos_hechos){
     if (dir.exists())
     {
         QStringList files = dir.entryList(QDir::Files | QDir::NoDotAndDotDot);
@@ -96,7 +96,7 @@ void leer_pedidos(QDir dir,ColaPedidos *pedidos,ListaClientes* Clientes,Almacen 
             Leido = leer_archivo_pedido(file.toStdString(),Clientes,almacen);
             if(Leido == NULL)
                 continue;
-            if(pedidos->buscar_pedido(Leido->numero_pedido)!= NULL){
+            if(pedidos->buscar_pedido(Leido->numero_pedido)!= NULL || pedidos_hechos->existe(Leido->numero_pedido)){
                 continue;
             }
             pedidos->encolarPedido_x_prioridad(Leido);

@@ -48,6 +48,7 @@ public:
     {
         while(true){
             while(running){
+                QThread::sleep(1);
                 if(!cola->vacia()){
                     int tiempo = cola->verFrente()->cant;
                     while(tiempo >= 0){

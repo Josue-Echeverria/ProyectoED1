@@ -43,7 +43,6 @@ struct Alistadores{
         arrayAlistador[1]->start();
         arrayAlistador[2]->start();
         arrayAlistador[3]->start();
-
         arrayAlistador[4]->start();
         arrayAlistador[5]->start();
     }
